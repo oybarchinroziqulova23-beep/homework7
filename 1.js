@@ -1,42 +1,20 @@
-const menyu = {
-    palov: 25000,
-    somsa: 10000,
-    shashlik: 15000,
-    choy: 3000,
-    salat: 5000
+// Array ichida object bo'lsin objectlarni price bo'yicha sort qiladigan algorithm tuzing!
+ var drinks = [
+  {name: "lemonade", price: 50},
+  {name: "lime", price: 10}
+]
 
-};
-function hisobla(ovqat) {
-    let sum = 0
-    for (let i of ovqat) {
-        if (i in menyu) {
-            sum = sum + menyu[i]
+function sortByPrice(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j].price > arr[j + 1].price) {
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
         }
-
     }
-    chegirma(sum)
-    // console.log(sum)
+    return arr;
 }
-
-function chegirma(sum) {
-    if (sum >= 50000) {
-        sum = 0.9 * sum
-        console.log(`sizning buyurmangiz 50 ming so'mdan oshgani uchun bizda 10% chegirma, 
-            kassaga ${sum}so'm to'lov qiling`)
-        tasdiqla()
-    }else{
-    console.log(`sizning buyurmangiz chegirmaga ega emas,kassaga ${sum} to'lov qiling`)
-    tasdiqla()}
-}
-
-function tasdiqla() {
-    console.log("Buyurtma qabul qilindi :) !")
-}
-
-function Buyurtma(ovqat, hisobla) {
-    console.log(ovqat)
-    hisobla(ovqat)
-
-}
-let ovqat = ["shashlik", "choy", "salat"]
-Buyurtma(ovqat, hisobla)
+console.log(sortByPrice(drinks))

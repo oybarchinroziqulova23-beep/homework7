@@ -1,11 +1,18 @@
-let str=prompt("so'z kiriting")
-let key=Number(prompt("raqam kiriting"))
-function code(str,key){
-    let newStr=""
-    for (let i=0; i<=str.length; i++){
-        let change=.charCodeAte(str[i])+key
-        newStr.push(String.fromCharCode(change))
-    } 
-    return newStr 
+// objectToArray Function object olsin va o'sha objectni array ko'rinishida qaytarib bersin!.
+var obj={
+  likes: 2,
+  dislikes: 3,
+  followers: 10
 }
-console.log(code(str,key))
+function objectToArray(obj){
+    let arr=[]
+    
+    for ( let key in obj){
+        let miniarr=[]
+        miniarr.push(key)
+        miniarr.push(obj[key])
+        arr.push(miniarr)
+    }
+    return arr
+}
+console.log(objectToArray(obj))
